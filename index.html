@@ -1,0 +1,69 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="GongHao 互动体验作品集">
+  <title>GongHao 互动体验作品集</title>
+  <style>
+    :root {
+      color-scheme: light;
+      font-family: Inter, "PingFang SC", "Microsoft YaHei", sans-serif;
+      background: #ffffff;
+      color: #17222a;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      min-width: 320px;
+      min-height: 100vh;
+      margin: 0;
+      display: grid;
+      place-items: center;
+      background:
+        radial-gradient(circle at 50% 42%, rgba(18, 176, 232, 0.1), transparent 32rem),
+        #ffffff;
+    }
+
+    h1 {
+      max-width: calc(100vw - 48px);
+      margin: 0;
+      color: #17222a;
+      font-size: clamp(2rem, 7vw, 5.5rem);
+      font-weight: 700;
+      line-height: 1.12;
+      letter-spacing: 0;
+      text-align: center;
+      text-wrap: balance;
+      animation: reveal 600ms ease-out both;
+    }
+
+    h1 span {
+      color: #12b0e8;
+    }
+
+    @keyframes reveal {
+      from {
+        opacity: 0;
+        transform: translateY(16px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      h1 {
+        animation: none;
+      }
+    }
+  </style>
+</head>
+<body>
+  <h1><span>GongHao</span> 互动体验作品集</h1>
+</body>
+</html>
