@@ -3,67 +3,147 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="GongHao 互动体验作品集">
-  <title>GongHao 互动体验作品集</title>
-  <style>
-    :root {
-      color-scheme: light;
-      font-family: Inter, "PingFang SC", "Microsoft YaHei", sans-serif;
-      background: #ffffff;
-      color: #17222a;
-    }
-
-    * {
-      box-sizing: border-box;
-    }
-
-    body {
-      min-width: 320px;
-      min-height: 100vh;
-      margin: 0;
-      display: grid;
-      place-items: center;
-      background:
-        radial-gradient(circle at 50% 42%, rgba(18, 176, 232, 0.1), transparent 32rem),
-        #ffffff;
-    }
-
-    h1 {
-      max-width: calc(100vw - 48px);
-      margin: 0;
-      color: #17222a;
-      font-size: clamp(2rem, 7vw, 5.5rem);
-      font-weight: 700;
-      line-height: 1.12;
-      letter-spacing: 0;
-      text-align: center;
-      text-wrap: balance;
-      animation: reveal 600ms ease-out both;
-    }
-
-    h1 span {
-      color: #12b0e8;
-    }
-
-    @keyframes reveal {
-      from {
-        opacity: 0;
-        transform: translateY(16px);
-      }
-      to {
-        opacity: 1;
-        transform: translateY(0);
-      }
-    }
-
-    @media (prefers-reduced-motion: reduce) {
-      h1 {
-        animation: none;
-      }
-    }
-  </style>
+  <meta name="description" content="石榴工作室专注空间交互、实时体验与东方文化数字表达。">
+  <meta name="theme-color" content="#f4f1ea">
+  <title>石榴工作室 | Shiliu Studio</title>
+  <link rel="stylesheet" href="styles.css">
+  <script src="script.js" defer></script>
 </head>
 <body>
-  <h1><span>GongHao</span> 互动体验作品集</h1>
+  <header class="site-header" data-header>
+    <a class="brand" href="#top" aria-label="返回首页">
+      <span class="brand-mark" aria-hidden="true">石</span>
+      <span>
+        <strong>石榴工作室</strong>
+        <small>SHILIU STUDIO</small>
+      </span>
+    </a>
+
+    <button class="menu-button" type="button" aria-label="打开导航" aria-expanded="false" data-menu-button>
+      <span></span>
+      <span></span>
+    </button>
+
+    <nav class="site-nav" aria-label="主导航" data-nav>
+      <a href="#about">关于</a>
+      <a href="#focus">方向</a>
+      <a href="#method">方法</a>
+      <a class="nav-contact" href="#contact">联系</a>
+    </nav>
+  </header>
+
+  <main id="top">
+    <section class="hero" aria-labelledby="hero-title">
+      <div class="hero-media" role="img" aria-label="沉浸式数字艺术空间中的互动体验"></div>
+      <div class="hero-shade"></div>
+      <div class="hero-content">
+        <p class="hero-kicker">INTERACTION · TECHNOLOGY · CULTURE</p>
+        <h1 id="hero-title">石榴工作室</h1>
+        <p class="hero-en">Shiliu Studio</p>
+        <p class="hero-copy">让技术退到体验之后，让每一次交互都自然发生。</p>
+        <a class="hero-link" href="#focus">
+          <span>探索工作方向</span>
+          <span aria-hidden="true">↓</span>
+        </a>
+      </div>
+    </section>
+
+    <section class="intro section-shell" id="about" data-reveal>
+      <div class="section-label">01 / ABOUT</div>
+      <div class="intro-copy">
+        <h2>连接空间、身体与叙事</h2>
+        <p>
+          石榴工作室是一间面向未来体验的独立创作工作室。我们关注人与数字世界如何相遇，
+          用实时技术、空间计算与细腻的视觉语言，把复杂系统转化为可感知、可理解的体验。
+        </p>
+      </div>
+      <p class="intro-note">BASED IN CHINA<br>WORKING EVERYWHERE</p>
+    </section>
+
+    <section class="focus-section" id="focus">
+      <div class="section-shell focus-heading" data-reveal>
+        <div class="section-label">02 / FOCUS</div>
+        <h2>工作方向</h2>
+        <p>从技术原型到完整体验，围绕真实场景持续打磨。</p>
+      </div>
+
+      <div class="focus-list">
+        <article class="focus-item" data-reveal>
+          <span class="focus-number">01</span>
+          <div>
+            <h3>空间交互</h3>
+            <p>VR / AR、手势与眼动、沉浸式装置</p>
+          </div>
+          <span class="focus-en">SPATIAL<br>INTERACTION</span>
+        </article>
+        <article class="focus-item" data-reveal>
+          <span class="focus-number">02</span>
+          <div>
+            <h3>实时体验</h3>
+            <p>Unity 原型、跨端系统、实时视觉反馈</p>
+          </div>
+          <span class="focus-en">REAL-TIME<br>EXPERIENCE</span>
+        </article>
+        <article class="focus-item" data-reveal>
+          <span class="focus-number">03</span>
+          <div>
+            <h3>文化数字表达</h3>
+            <p>传统艺术再叙事、数字展陈、互动内容</p>
+          </div>
+          <span class="focus-en">DIGITAL<br>CULTURE</span>
+        </article>
+      </div>
+    </section>
+
+    <section class="statement">
+      <div class="statement-inner section-shell" data-reveal>
+        <p class="section-label">OUR POINT OF VIEW</p>
+        <blockquote>
+          好的互动不是增加更多操作，<br>
+          而是让意图被<span>准确理解</span>。
+        </blockquote>
+      </div>
+    </section>
+
+    <section class="method section-shell" id="method">
+      <div class="method-heading" data-reveal>
+        <div class="section-label">03 / METHOD</div>
+        <h2>从问题出发，<br>在体验中验证。</h2>
+      </div>
+      <ol class="method-steps">
+        <li data-reveal>
+          <span>01</span>
+          <h3>理解场景</h3>
+          <p>明确用户、空间与设备约束，找到真正需要解决的问题。</p>
+        </li>
+        <li data-reveal>
+          <span>02</span>
+          <h3>快速原型</h3>
+          <p>用可运行的原型验证交互，让抽象判断变成真实体验。</p>
+        </li>
+        <li data-reveal>
+          <span>03</span>
+          <h3>持续打磨</h3>
+          <p>在反馈、性能与视觉之间反复迭代，直到体验自然成立。</p>
+        </li>
+      </ol>
+    </section>
+
+    <section class="contact" id="contact">
+      <div class="section-shell contact-inner" data-reveal>
+        <p class="section-label">04 / CONTACT</p>
+        <h2>一起创造<br>值得记住的体验。</h2>
+        <a class="contact-link" href="https://github.com/gonghaobb" target="_blank" rel="noreferrer">
+          <span>在 GitHub 联系我</span>
+          <span aria-hidden="true">↗</span>
+        </a>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <p>© <span data-year></span> SHILIU STUDIO</p>
+    <p>INTERACTIVE EXPERIENCE & DIGITAL CULTURE</p>
+  </footer>
 </body>
 </html>
