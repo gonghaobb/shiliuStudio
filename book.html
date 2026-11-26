@@ -1,0 +1,78 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="description" content="石榴工作室原创互动立体书：松风入卷。">
+  <meta name="theme-color" content="#183a31">
+  <title>松风入卷 | 石榴工作室互动立体书</title>
+  <link rel="stylesheet" href="book.css">
+  <script type="importmap">
+    {
+      "imports": {
+        "three": "https://cdn.jsdelivr.net/npm/three@0.170.0/build/three.module.js",
+        "three/addons/": "https://cdn.jsdelivr.net/npm/three@0.170.0/examples/jsm/"
+      }
+    }
+  </script>
+  <script type="module" src="book.js"></script>
+</head>
+<body>
+  <main class="book-app">
+    <canvas class="book-canvas" data-canvas aria-label="可旋转的三维纸艺立体书"></canvas>
+
+    <header class="book-header">
+      <a class="back-link" href="index.html" aria-label="返回石榴工作室首页">
+        <span aria-hidden="true">←</span>
+        <span>石榴工作室</span>
+      </a>
+      <p>互动立体书 · 第一卷</p>
+    </header>
+
+    <section class="chapter-copy" aria-live="polite">
+      <p class="chapter-number">CHAPTER 01</p>
+      <h1>松风入卷</h1>
+      <p class="chapter-task" data-task>依次点亮山间的三盏纸灯</p>
+    </section>
+
+    <div class="progress" aria-label="任务进度">
+      <span data-progress="0"></span>
+      <span data-progress="1"></span>
+      <span data-progress="2"></span>
+    </div>
+
+    <div class="loading" data-loading>
+      <span></span>
+      <p>正在展开书页</p>
+    </div>
+
+    <div class="completion" data-completion hidden>
+      <p>山径已被照亮</p>
+      <strong>风从书页深处吹来</strong>
+    </div>
+
+    <nav class="book-controls" aria-label="立体书控制">
+      <button type="button" data-reset-view title="复位视角" aria-label="复位视角">
+        <svg viewBox="0 0 24 24" aria-hidden="true">
+          <path d="M3 12a9 9 0 1 0 3-6.7L3 8"></path>
+          <path d="M3 3v5h5"></path>
+        </svg>
+      </button>
+      <p><span class="desktop-hint">拖动旋转 · 滚轮缩放 · 点击纸灯</span><span class="mobile-hint">单指旋转 · 双指缩放 · 点击纸灯</span></p>
+      <button type="button" data-replay title="重新展开" aria-label="重新展开">
+        <svg viewBox="0 0 24 24" aria-hidden="true">
+          <path d="M12 3v3"></path>
+          <path d="M12 18v3"></path>
+          <path d="m4.2 4.2 2.1 2.1"></path>
+          <path d="m17.7 17.7 2.1 2.1"></path>
+          <path d="M3 12h3"></path>
+          <path d="M18 12h3"></path>
+          <circle cx="12" cy="12" r="4"></circle>
+        </svg>
+      </button>
+    </nav>
+  </main>
+
+  <noscript>此互动立体书需要启用 JavaScript。</noscript>
+</body>
+</html>

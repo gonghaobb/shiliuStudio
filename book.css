@@ -1,0 +1,342 @@
+:root {
+  color-scheme: dark;
+  font-family: "PingFang SC", "Microsoft YaHei", "Noto Sans CJK SC", Arial, sans-serif;
+  color: #f4edda;
+  background: #183a31;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body,
+.book-app {
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  overflow: hidden;
+}
+
+body {
+  min-width: 320px;
+  background:
+    radial-gradient(circle at 50% 42%, rgba(81, 124, 96, 0.24), transparent 44%),
+    #183a31;
+}
+
+button,
+a {
+  color: inherit;
+  font: inherit;
+}
+
+a {
+  text-decoration: none;
+}
+
+.book-app {
+  position: relative;
+  isolation: isolate;
+}
+
+.book-canvas {
+  position: absolute;
+  inset: 0;
+  display: block;
+  width: 100%;
+  height: 100%;
+  touch-action: none;
+  cursor: grab;
+  outline: none;
+}
+
+.book-canvas:active {
+  cursor: grabbing;
+}
+
+.book-header {
+  position: absolute;
+  z-index: 3;
+  top: 0;
+  left: 0;
+  display: flex;
+  width: 100%;
+  align-items: center;
+  justify-content: space-between;
+  padding: max(26px, env(safe-area-inset-top)) 34px 0;
+  pointer-events: none;
+}
+
+.back-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  font-size: 0.76rem;
+  font-weight: 700;
+  pointer-events: auto;
+}
+
+.back-link span:first-child {
+  font-size: 1rem;
+  transition: transform 180ms ease;
+}
+
+.back-link:hover span:first-child {
+  transform: translateX(-4px);
+}
+
+.book-header p {
+  margin: 0;
+  color: rgba(244, 237, 218, 0.64);
+  font-size: 0.66rem;
+  letter-spacing: 0.14em;
+}
+
+.chapter-copy {
+  position: absolute;
+  z-index: 2;
+  top: 86px;
+  left: 34px;
+  width: 360px;
+  pointer-events: none;
+}
+
+.chapter-number {
+  margin: 0 0 13px;
+  color: #e5a84d;
+  font-size: 0.62rem;
+  font-weight: 800;
+  letter-spacing: 0.16em;
+}
+
+.chapter-copy h1 {
+  margin: 0;
+  font-family: "STKaiti", "KaiTi", serif;
+  font-size: clamp(2.5rem, 4.5vw, 4.8rem);
+  font-weight: 400;
+  line-height: 1;
+  white-space: nowrap;
+}
+
+.chapter-task {
+  margin: 17px 0 0;
+  color: rgba(244, 237, 218, 0.7);
+  font-size: 0.76rem;
+  line-height: 1.7;
+}
+
+.progress {
+  position: absolute;
+  z-index: 3;
+  top: 182px;
+  right: 35px;
+  display: flex;
+  flex-direction: column;
+  gap: 11px;
+}
+
+.progress span {
+  width: 7px;
+  height: 7px;
+  border: 1px solid rgba(244, 237, 218, 0.72);
+  border-radius: 50%;
+  transition: background-color 260ms ease, box-shadow 260ms ease;
+}
+
+.progress span.is-lit {
+  border-color: #f2b84b;
+  background: #f2b84b;
+  box-shadow: 0 0 14px rgba(242, 184, 75, 0.82);
+}
+
+.book-controls {
+  position: absolute;
+  z-index: 4;
+  bottom: max(25px, env(safe-area-inset-bottom));
+  left: 50%;
+  display: grid;
+  width: min(500px, calc(100% - 40px));
+  height: 52px;
+  grid-template-columns: 52px 1fr 52px;
+  border: 1px solid rgba(244, 237, 218, 0.28);
+  background: rgba(12, 36, 29, 0.84);
+  backdrop-filter: blur(15px);
+  transform: translateX(-50%);
+}
+
+.book-controls button {
+  display: grid;
+  width: 52px;
+  height: 50px;
+  padding: 0;
+  place-items: center;
+  border: 0;
+  background: transparent;
+  cursor: pointer;
+}
+
+.book-controls button:first-child {
+  border-right: 1px solid rgba(244, 237, 218, 0.2);
+}
+
+.book-controls button:last-child {
+  border-left: 1px solid rgba(244, 237, 218, 0.2);
+}
+
+.book-controls button:hover,
+.book-controls button:focus-visible {
+  color: #f2b84b;
+  background: rgba(255, 255, 255, 0.06);
+  outline: none;
+}
+
+.book-controls svg {
+  width: 18px;
+  fill: none;
+  stroke: currentColor;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  stroke-width: 1.6;
+}
+
+.book-controls p {
+  align-self: center;
+  margin: 0;
+  color: rgba(244, 237, 218, 0.62);
+  font-size: 0.65rem;
+  letter-spacing: 0.06em;
+  text-align: center;
+}
+
+.mobile-hint {
+  display: none;
+}
+
+.loading {
+  position: absolute;
+  z-index: 6;
+  inset: 0;
+  display: grid;
+  place-content: center;
+  justify-items: center;
+  background: #183a31;
+  transition: visibility 600ms, opacity 600ms ease;
+}
+
+.loading.is-hidden {
+  visibility: hidden;
+  opacity: 0;
+}
+
+.loading span {
+  width: 44px;
+  height: 32px;
+  border-right: 2px solid #e5a84d;
+  border-bottom: 2px solid #e5a84d;
+  transform: skewY(-24deg);
+  animation: page-fold 900ms ease-in-out infinite alternate;
+}
+
+.loading p {
+  margin: 24px 0 0;
+  color: rgba(244, 237, 218, 0.65);
+  font-size: 0.7rem;
+  letter-spacing: 0.14em;
+}
+
+.completion {
+  position: absolute;
+  z-index: 4;
+  top: 50%;
+  left: 50%;
+  width: min(340px, calc(100% - 48px));
+  padding: 24px;
+  border-top: 1px solid rgba(244, 237, 218, 0.42);
+  border-bottom: 1px solid rgba(244, 237, 218, 0.42);
+  background: rgba(20, 55, 45, 0.9);
+  text-align: center;
+  opacity: 0;
+  pointer-events: none;
+  transform: translate(-50%, -40%);
+  transition: opacity 480ms ease, transform 480ms ease;
+}
+
+.completion.is-visible {
+  opacity: 1;
+  transform: translate(-50%, -50%);
+}
+
+.completion p {
+  margin: 0 0 8px;
+  color: #e5a84d;
+  font-size: 0.62rem;
+  letter-spacing: 0.15em;
+}
+
+.completion strong {
+  font-family: "STKaiti", "KaiTi", serif;
+  font-size: 1.45rem;
+  font-weight: 400;
+}
+
+@keyframes page-fold {
+  to {
+    transform: skewY(24deg) rotateY(180deg);
+  }
+}
+
+@media (max-width: 720px) {
+  .book-header {
+    padding: max(20px, env(safe-area-inset-top)) 20px 0;
+  }
+
+  .book-header p {
+    display: none;
+  }
+
+  .chapter-copy {
+    top: 68px;
+    left: 20px;
+    width: calc(100% - 40px);
+    text-align: center;
+  }
+
+  .chapter-copy h1 {
+    font-size: 2.8rem;
+  }
+
+  .chapter-number {
+    margin-bottom: 8px;
+  }
+
+  .chapter-task {
+    margin-top: 9px;
+  }
+
+  .progress {
+    top: auto;
+    right: 50%;
+    bottom: calc(max(25px, env(safe-area-inset-bottom)) + 68px);
+    flex-direction: row;
+    transform: translateX(50%);
+  }
+
+  .desktop-hint {
+    display: none;
+  }
+
+  .mobile-hint {
+    display: inline;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
